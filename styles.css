@@ -1,0 +1,156 @@
+@font-face {
+    font-family: 'YouMurdererBB';
+    src: url('fonts/youmurdererbb.ttf');
+}
+@font-face {
+    font-family: 'DischargePro';
+    src: url('fonts/DischargePro.ttf');
+}
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+html, body {
+    width: 100%;
+    height: 100%;
+    background-color: #333;
+    font-family: sans-serif;
+}
+.Page {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+}
+input[type="checkbox"],
+input[type="radio"] {
+    display: none;
+}
+.sidebar {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 200px;
+    height: 100%;
+    background-color: #111;
+    color: #fff;
+    z-index: 10;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    padding: 20px;
+}
+.page_content {
+    margin-left: 200px;
+    width: calc(100% - 200px);
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-image: url('images/article_background.webp');
+}
+.article {
+    text-align: center;
+    color: white;
+    font-family: YouMurdererBB, sans-serif;
+    -webkit-text-stroke: 1px black;
+    text-shadow: 2px 2px 3px white;
+}
+.article_name {
+    font-size: 288px;
+    margin-bottom: 20px;
+}
+.article_text {
+    font-size: 96px;
+    padding: 0;
+    margin: 0;
+}
+.article_footer {
+    margin-top: 20px;
+    font-size: 24px;
+    display: flex;
+    justify-content: space-between;
+    flex-direction: row;
+    padding-top: 250px;
+}
+.menu-overlay {
+    position: absolute;
+    top: 0;
+    left: 200px;
+    width: calc(100% - 200px);
+    height: 100%;
+    background: rgba(0, 0, 0, 0.6);
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.5s ease;
+    z-index: 9;
+}
+#MenuToggle:checked ~ .menu-overlay {
+    opacity: 1;
+    pointer-events: auto;
+}
+.menu-container {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    display: flex;
+    gap: 40px;
+    transform: translate(-50%, -50%);
+}
+.menu-item {
+    width: 450px;
+    background: #000;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    padding-top: 20px;
+    min-height: 600px;
+}
+.logo {
+    margin-bottom: 20px;
+    background-color: white;
+    opacity: 0;
+    transform: translateY(-20px);
+    transition: opacity 0.4s ease, transform 0.4s ease;
+}
+.menu-item:hover .logo {
+    opacity: 1;
+    transform: translateY(0);
+}
+.menu-text {
+    font-family: YouMurdererBB, sans-serif;
+    color: white;
+    font-size: 64px;
+    -webkit-text-stroke: 1px black;
+    text-shadow: 4px 4px 5px #000;
+    text-align: center;
+}
+.menu-label {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    cursor: pointer;
+}
+.sub-menu {
+    margin-top: 20px;
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.2s ease;
+}
+.menu-item input[type="radio"]:checked ~ .sub-menu {
+    max-height: 300px;
+}
+.sub-menu-item {
+    color: #fff;
+    font-size: 20px;
+    padding: 10px;
+    border-bottom: 1px solid #444;
+    text-align: center;
+    cursor: pointer;
+}
+.sub-menu-item:hover {
+    background-color: #222;
+}
