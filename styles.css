@@ -6,31 +6,35 @@
     font-family: 'DischargePro';
     src: url('fonts/DischargePro.ttf');
 }
+
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
+
 html, body {
     width: 100%;
     height: 100%;
-    background-color: #333;
+    background-color: DarkGray;
     font-family: sans-serif;
 }
+
 .Page {
     position: relative;
     width: 100%;
     height: 100%;
     overflow: hidden;
 }
+
 .sidebar {
     position: absolute;
     top: 0;
     left: 0;
     width: 200px;
     height: 100%;
-    background-color: #111;
-    color: #fff;
+    background-color: Black;
+    color: White;
     z-index: 10;
     display: flex;
     flex-direction: column;
@@ -38,15 +42,17 @@ html, body {
     align-items: flex-start;
     padding: 20px;
 }
+
 .menu-text {
     font-family: YouMurdererBB, sans-serif;
-    color: white;
+    color: White;
     font-size: 64px;
-    -webkit-text-stroke: 1px black;
-    text-shadow: 4px 4px 5px #000;
+    -webkit-text-stroke: 1px Black;
+    text-shadow: 4px 4px 5px Black;
     text-align: center;
     cursor: pointer;
 }
+
 .page_content {
     margin-left: 200px;
     width: calc(100% - 200px);
@@ -55,22 +61,28 @@ html, body {
     align-items: center;
     justify-content: center;
     background-image: url('images/article_background.webp');
+    background-size: cover;
+    background-position: center;
 }
+
 .article {
     text-align: center;
-    color: white;
+    color: White;
     font-family: YouMurdererBB, sans-serif;
-    -webkit-text-stroke: 1px black;
-    text-shadow: 2px 2px 3px white;
+    -webkit-text-stroke: 1px Black;
+    text-shadow: 2px 2px 3px White;
 }
+
 .article_name {
     font-size: 192px;
     margin-bottom: 20px;
 }
+
 .article_text {
     font-size: 96px;
     margin: 0;
 }
+
 .article_footer {
     margin-top: 20px;
     font-size: 24px;
@@ -79,6 +91,7 @@ html, body {
     flex-direction: row;
     padding-top: 250px;
 }
+
 .menu-overlay {
     position: absolute;
     top: 0;
@@ -91,54 +104,125 @@ html, body {
     pointer-events: none;
     z-index: 9;
 }
+
 .menu-container {
     position: absolute;
     top: 50%;
     left: 50%;
     display: flex;
+    flex-direction: row;
     gap: 40px;
     transform: translate(-50%, -50%);
 }
+
 .menu-item {
     width: 450px;
-    background: #000;
+    background: Black;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: flex-start;
     padding-top: 20px;
     min-height: 600px;
+    position: relative;
 }
+
 .logo {
     margin-bottom: 20px;
-    background-color: white;
+    background-color: White;
     opacity: 0;
     transform: translateY(-20px);
+    transition: opacity 0.3s ease, transform 0.3s ease;
 }
+
 .menu-item:hover .logo {
     opacity: 1;
     transform: translateY(0);
 }
+
 .menu-label {
     display: flex;
     flex-direction: column;
     align-items: center;
     cursor: pointer;
+    position: relative;
 }
-.sub-menu {
-    margin-top: 20px;
-    max-height: none;
+
+.dynamicSubMenu {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    background: Black;
+    display: none;
+    flex-direction: column;
+    align-items: flex-start;
+    padding-top: 10px;
     height: 0;
     overflow: hidden;
+    transition: height 0.3s ease, opacity 0.3s ease;
+    z-index: 10;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.5);
 }
-.sub-menu-item {
-    color: #fff;
+
+.dynamicSubMenu .sub-menu-item {
+    width: 100%;
+    color: White;
     font-size: 20px;
     padding: 10px;
-    border-bottom: 1px solid #444;
+    border-bottom: 1px solid DarkGray;
     text-align: center;
     cursor: pointer;
 }
-.sub-menu-item:hover {
-    background-color: #222;
+
+.dynamicSubMenu .sub-menu-item:hover {
+    background-color: DarkGray;
+}
+
+.dynamicSubMenu.active {
+    display: flex;
+    height: auto;
+    opacity: 1;
+}
+
+@media (max-width: 768px) {
+    .sidebar {
+        width: 150px;
+        padding: 15px;
+    }
+
+    .menu-text {
+        font-size: 48px;
+    }
+
+    .page_content {
+        margin-left: 150px;
+    }
+
+    .article_name {
+        font-size: 144px;
+    }
+
+    .article_text {
+        font-size: 72px;
+    }
+
+    .article_footer {
+        font-size: 20px;
+        padding-top: 200px;
+    }
+
+    .menu-container {
+        flex-direction: column;
+        gap: 20px;
+    }
+
+    .menu-item {
+        width: 300px;
+        min-height: 400px;
+    }
+
+    .dynamicSubMenu {
+        width: 300px;
+    }
 }
